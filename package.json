@@ -21,5 +21,12 @@
     "chai": "^3.4.1",
     "jshint": "^2.8.0",
     "mocha": "^2.3.4"
-  }
+  },
+  "keywords": [
+    "es6-promise",
+    "es6-promise-extended",
+    "finally",
+    "defer",
+    "deferred"
+  ]
 }

@@ -1,0 +1,22 @@
+{
+	"bitwise": true,
+	"camelcase": true,
+	"eqeqeq": true,
+	"globals": {
+		"describe" : false,
+		"it": false,
+		"beforeEach": false,
+		"afterEach": false,
+		"after": false
+	},
+	"globalstrict": false,
+	"indent": 4,
+	"laxbreak": true,
+	"maxparams": 3,
+	"multistr": true,
+	"newcap": true,
+	"node": true,
+	"quotmark": "single",
+	"trailing": true,
+	"undef": true
+}

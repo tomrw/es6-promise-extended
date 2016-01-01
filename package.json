@@ -1,0 +1,25 @@
+{
+  "name": "es6-promise-extended",
+  "version": "1.0.0",
+  "author": "Tom West",
+  "description": "ES6 promise extended with finally and deferred promises",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tomrw/es6-promise-extended"
+  },
+  "main": "lib/es6-promise-extended.js",
+  "scripts": {
+    "test": "mocha test/*.js",
+    "watch-tests": "mocha -w test/*.js",
+    "lint": "jshint lib/*.js test/*.js; echo"
+  },
+  "dependencies": {
+    "es6-promise": "^3.0.2"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "jshint": "^2.8.0",
+    "mocha": "^2.3.4"
+  }
+}

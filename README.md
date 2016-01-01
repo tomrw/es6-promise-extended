@@ -2,10 +2,10 @@
 As extension to the [es6-promise](https://www.npmjs.com/package/es6-promise) library, which brings the finally method and deferred promises.
 
 ## Building and testing
-* To install all dependencies: `npm install`
-* To run the tests: `npm test`
-* To run the tests and watch the code for changes: `npm run watch-tests`
-* To lint the code: `npm run lint`
+* `npm install` To install all dependencies
+* `npm test` To run the tests
+* `npm run watch-tests` To run the tests and watch the code for changes
+* `npm run lint` To lint the code
 
 ## Usage
 To install:
@@ -49,7 +49,7 @@ promise
 	.finally(function (result) {
 		console.log('Finally!', result);
 	});
-	
+
 // Finally! Error!
 ```
 

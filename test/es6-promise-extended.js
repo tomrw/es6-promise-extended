@@ -132,4 +132,45 @@ describe('es6-promise-extended', function () {
 			expect(globlPromise.prototype.finally).to.equal(undefined);
 		});
 	});
+
+	describe('Promise', function () {
+		it('should provide access to Promise.all', function (done) {
+			var promise1 = new ExtendedPromise.Promise(function (resolve, reject) {
+				setTimeout(function () {
+					resolve(10);
+				}, 1);
+			});
+			var promise2 = new ExtendedPromise.Promise(function (resolve, reject) {
+				setTimeout(function () {
+					resolve(20);
+				}, 2);
+			});
+
+			ExtendedPromise.all([ promise1, promise2 ]).then(function (result) {
+				expect(result[0]).to.equal(10);
+				expect(result[1]).to.equal(20);
+
+				done();
+			});
+		});
+
+		it('should provide access to Promise.race', function (done) {
+			var promise1 = new ExtendedPromise.Promise(function (resolve, reject) {
+				setTimeout(function () {
+					resolve(10);
+				}, 1);
+			});
+			var promise2 = new ExtendedPromise.Promise(function (resolve, reject) {
+				setTimeout(function () {
+					resolve(20);
+				}, 2);
+			});
+
+			ExtendedPromise.race([ promise1, promise2 ]).then(function (result) {
+				expect(result).to.equal(10);
+
+				done();
+			});
+		});
+	});
 });

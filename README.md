@@ -1,5 +1,5 @@
 # es6-promise-extended
-As extension to the [es6-promise](https://www.npmjs.com/package/es6-promise) library, which brings the finally method and deferred promises.
+A lightweight extension to the [es6-promise](https://www.npmjs.com/package/es6-promise) library, which brings a finally clause and deferred promises, alongside the es6-promise Promise object and static methods.
 
 ## Building and testing
 * `npm install` To install all dependencies
@@ -18,9 +18,18 @@ To use:
 var ExtendedPromise = require('es6-promise-extended');
 ```
 
+### Promise
+Promises are created as shown:
+```javascript
+var promise = new ExtendedPromise.Promise(function (resolve, reject) {
+	resolve('someValue');
+	// OR
+	reject('someError');
+});
+```
+
 ### finally
 Finally is always called after the rejection or fulfillment of a promise, as shown:
-
 ```javascript
 var promise = new ExtendedPromise.Promise(function (resolve, reject) {
 	resolve(10);
@@ -99,4 +108,46 @@ deferred.promise
 deferred.resolve('I always run.');
 
 // Finally! I always run.
+```
+
+### all
+all resolves when all the promises passed to it have resolved or rejected
+```javascript
+var promise1 = new ExtendedPromise.Promise(function (resolve, reject) {
+	setTimeout(function () {
+		resolve(10);
+	}, 1);
+});
+var promise2 = new ExtendedPromise.Promise(function (resolve, reject) {
+	setTimeout(function () {
+		resolve(20);
+	}, 2);
+});
+
+ExtendedPromise.all([ promise1, promise2 ], function (result) {
+	console.log('Resolved!', result[0], result[1]);
+});
+
+// Resolved! 10 20
+```
+
+### race
+race resolves as soon as a promise passed to it has been resolved or rejected
+```javascript
+var promise1 = new ExtendedPromise.Promise(function (resolve, reject) {
+	setTimeout(function () {
+		resolve(10);
+	}, 1);
+});
+var promise2 = new ExtendedPromise.Promise(function (resolve, reject) {
+	setTimeout(function () {
+		resolve(20);
+	}, 2);
+});
+
+ExtendedPromise.race([ promise1, promise2 ], function (result) {
+	console.log('Resolved!', result);
+});
+
+// Resolved! 10
 ```

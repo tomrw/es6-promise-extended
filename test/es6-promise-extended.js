@@ -172,5 +172,23 @@ describe('es6-promise-extended', function () {
 				done();
 			});
 		});
+
+		it('should provide access to Promise.resolve', function (done) {
+			ExtendedPromise.resolve('Success!')
+				.then(function (msg) {
+					expect(msg).to.equal('Success!');
+
+					done();
+				});
+		});
+
+		it('should provide access to Promise.reject', function (done) {
+			ExtendedPromise.reject('Error')
+				.catch(function (msg) {
+					expect(msg).to.equal('Error');
+
+					done();
+				});
+		});
 	});
 });

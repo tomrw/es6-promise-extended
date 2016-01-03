@@ -110,7 +110,7 @@ deferred.resolve('I always run.');
 // Finally! I always run.
 ```
 
-### all
+### Promise.all
 all resolves when all the promises passed to it have resolved or rejected
 ```javascript
 var promise1 = new ExtendedPromise.Promise(function (resolve, reject) {
@@ -124,14 +124,14 @@ var promise2 = new ExtendedPromise.Promise(function (resolve, reject) {
 	}, 2);
 });
 
-ExtendedPromise.all([ promise1, promise2 ], function (result) {
+ExtendedPromise.all([ promise1, promise2 ].then(function (result) {
 	console.log('Resolved!', result[0], result[1]);
 });
 
 // Resolved! 10 20
 ```
 
-### race
+### Promise.race
 race resolves as soon as a promise passed to it has been resolved or rejected
 ```javascript
 var promise1 = new ExtendedPromise.Promise(function (resolve, reject) {
@@ -145,9 +145,33 @@ var promise2 = new ExtendedPromise.Promise(function (resolve, reject) {
 	}, 2);
 });
 
-ExtendedPromise.race([ promise1, promise2 ], function (result) {
+ExtendedPromise.race([ promise1, promise2 ]).then(function (result) {
 	console.log('Resolved!', result);
 });
 
 // Resolved! 10
+```
+
+### Promise.resolve
+Returns a promise that is resolved
+```javascript
+var promise = ExtendedPromise.resolve(10);
+
+promise.then(function (result) {
+	console.log('Resolved!', result);
+});
+
+// Resolved! 10
+```
+
+### Promise.reject
+Returns a promise that is rejected
+```javascript
+var promise = ExtendedPromise.reject('I have been rejected!');
+
+promise.catch(function (msg) {
+	console.log('Error!', msg);
+});
+
+// Resolved! I have been rejected!
 ```

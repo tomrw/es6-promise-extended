@@ -15,7 +15,8 @@
     "lint": "jshint lib/*.js test/*.js; echo"
   },
   "dependencies": {
-    "es6-promise": "^3.0.2"
+    "es6-promise": "^3.0.2",
+    "inherits": "^2.0.1"
   },
   "devDependencies": {
     "chai": "^3.4.1",
